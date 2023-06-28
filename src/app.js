@@ -8,21 +8,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "apieng.onrender.com");
+  res.setHeader("Access-Control-Allow-Origin", "apiadocao.onrender.com");
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept",
-    { key: "Access-Control-Allow-Credentials", value: "true" },
-    { key: "Access-Control-Allow-Origin", value: "*" },
-    {
-      key: "Access-Control-Allow-Methods",
-      value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
-    },
-    {
-      key: "Access-Control-Allow-Headers",
-      value:
-        "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization",
-    }
+    "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
 });
