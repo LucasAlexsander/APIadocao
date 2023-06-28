@@ -110,15 +110,19 @@ router.get("/:id", function(req, res) {
 });
 router.post("/", function(req, res) {
   const animal = req.body;
-  CadAnimal.createAnimal(animal, function(carro) {
-    res.json({ msg: "Carro inserido com sucesso" });
+  CadAnimal.createAnimal(animal, function() {
+    res.json({ msg: "Animal inserido com sucesso" });
   });
 });
 router.put("/:id", function(req, res) {
   const id = req.params.id;
   const { nome, especie, porte, sexo, idade, descricao } = req.body;
-  CadAnimal.updateAnimal(id, { nome, especie, porte, sexo, idade, descricao }, function() {
-    res.json({ msg: "Registro atualizado com sucesso!" });
-  });
+  CadAnimal.updateAnimal(
+    id,
+    { nome, especie, porte, sexo, idade, descricao },
+    function() {
+      res.json({ msg: "Registro atualizado com sucesso!" });
+    }
+  );
 });
 module.exports = router;

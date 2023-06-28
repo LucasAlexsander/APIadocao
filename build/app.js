@@ -112,16 +112,20 @@ var require_animalRoutes = __commonJS({
     });
     router.post("/", function(req, res) {
       const animal = req.body;
-      CadAnimal.createAnimal(animal, function(carro) {
-        res.json({ msg: "Carro inserido com sucesso" });
+      CadAnimal.createAnimal(animal, function() {
+        res.json({ msg: "Animal inserido com sucesso" });
       });
     });
     router.put("/:id", function(req, res) {
       const id = req.params.id;
       const { nome, especie, porte, sexo, idade, descricao } = req.body;
-      CadAnimal.updateAnimal(id, { nome, especie, porte, sexo, idade, descricao }, function() {
-        res.json({ msg: "Registro atualizado com sucesso!" });
-      });
+      CadAnimal.updateAnimal(
+        id,
+        { nome, especie, porte, sexo, idade, descricao },
+        function() {
+          res.json({ msg: "Registro atualizado com sucesso!" });
+        }
+      );
     });
     module2.exports = router;
   }
@@ -291,17 +295,25 @@ var require_resgateRoutes = __commonJS({
 
 // src/app.js
 var express = require("express");
+var cors = require("cors");
 var app = express();
+var issue2options = {
+  origin: true,
+  methods: ["POST", "GET", "HEAD", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  credentials: true,
+  maxAge: 3600,
+  exposedHeaders: ["Total-Count", "Unread-Count"]
+};
+app.use(cors(issue2options));
+app.options("*", cors());
 var bodyParser = require("body-parser");
 var port = process.env.PORT || 5e3;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "apieng.onrender.com");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  app.use(cors());
   next();
 });
 app.use("/animais", require_animalRoutes());
