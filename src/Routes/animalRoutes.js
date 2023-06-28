@@ -24,8 +24,9 @@ router.get("/:id", function (req, res) {
 //post para salvar um animal
 router.post("/", function (req, res) {
   const animal = req.body;
-  CadAnimal.createAnimal(animal, function () {
+  CadAnimal.createAnimal(animal, function (carro) {
     res.json({ msg: "Animal inserido com sucesso" });
+    console.log(animal);
   });
 });
 //put para atualizar um animal
