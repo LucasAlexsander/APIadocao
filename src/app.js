@@ -15,7 +15,7 @@ app.use((req, res, next) => {
   );
   res.header(
     "Access-Control-Allow-Methods",
-    "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+    "POST,GET,OPTIONS,PATCH,DELETE,PUT"
   );
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
