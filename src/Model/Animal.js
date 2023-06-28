@@ -84,6 +84,7 @@ class CadAnimal {
 
     console.log(query.sql);
     connection.end();
+    callback();
   }
 
   static createAnimal(animal, callback) {
