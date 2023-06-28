@@ -76,12 +76,12 @@ class CadAnimal {
 
     let aux = setStatementCollumns.join(",");
 
-    //const sql = `UPDATE cadAnimal SET ${aux} where id = ${id}`;
-    const sql =
-      "UPDATE cadAnimal SET " +
-      setStatementCollumns.join(",") +
-      " where id = " +
-      id;
+    const sql = `UPDATE cadAnimal SET ${aux} where id = ${id}`;
+    // const sql =
+    //   "UPDATE cadAnimal SET " +
+    //   setStatementCollumns.join(",") +
+    //   " where id = " +
+    //   id;
     const query = connection.query(sql, function (error, results, fields) {
       if (error) throw error;
       callback(results);
