@@ -31,6 +31,7 @@ app.use((req, res, next) => {
     "POST, GET, OPTIONS, PATCH, DELETE, PUT"
   );
   res.header("Access-Control-Allow-Credentials", "true");
+  app.use(cors());
   next();
 });
 
