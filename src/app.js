@@ -21,7 +21,7 @@ app.use((req, res, next) => {
     "DELETE",
     "PUT",
   ]);
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "no-cors");
   res.header("Access-Control-Allow-Credentials", "true");
   next();
 });
