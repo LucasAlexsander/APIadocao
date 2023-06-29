@@ -95,9 +95,9 @@ class CadAnimal {
 
   static createAnimal(animal, callback) {
     const connection = CadAnimal.connect();
-    const { nome, especie, porte, sexo, idade, descricao } = animal;
+    const { nome, especie, porte, sexo, idade, descricao, situacao } = animal;
 
-    const sql = `INSERT INTO cadAnimal ( nome, especie, porte,sexo, idade, descricao ) values ( '${nome}', '${especie}', '${porte}', '${sexo}', ${idade}, '${descricao}')`;
+    const sql = `INSERT INTO cadAnimal ( nome, especie, porte,sexo, idade, descricao, situacao ) values ( '${nome}', '${especie}', '${porte}', '${sexo}', ${idade}, '${descricao}', '${situacao}')`;
     const query = connection.query(sql, function (error, results, fields) {
       if (error) throw error;
     });
