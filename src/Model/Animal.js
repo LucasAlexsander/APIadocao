@@ -19,7 +19,8 @@ class CadAnimal {
   static getAnimal(callback) {
     const connection = CadAnimal.connect();
     //Cria uma consulta
-    const sql = "select * from cadAnimal";
+    const sql =
+      "select * from cadAnimal left join resgateAnimal on cadAnimal.id = resgateAnimal.id_animal left join adocao on cadAnimal.id = adocao.id_animal";
     const query = connection.query(sql, function (error, results, fields) {
       if (error) throw error;
       //Retorna os dados pela callback
