@@ -32,11 +32,11 @@ router.post("/", function (req, res) {
 //put para atualizar um animal
 router.put("/:id", function (req, res) {
   const id = req.params.id;
-  const { nome, especie, porte, sexo, idade, descricao } = req.body;
+  const { nome, especie, porte, sexo, idade, descricao, situacao } = req.body;
 
   CadAnimal.updateAnimal(
     id,
-    { nome, especie, porte, sexo, idade, descricao },
+    { nome, especie, porte, sexo, idade, descricao, situacao },
     function () {
       res.json({ msg: "Registro atualizado com sucesso!" });
     }
