@@ -19,7 +19,7 @@ class CadAnimal {
   static getAnimal(callback) {
     const connection = CadAnimal.connect();
     //Cria uma consulta
-    const sql = "select c.* from cadAnimal";
+    const sql = "select * from cadAnimal";
     const query = connection.query(sql, function (error, results, fields) {
       if (error) throw error;
       //Retorna os dados pela callback
