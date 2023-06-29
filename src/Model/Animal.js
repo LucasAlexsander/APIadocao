@@ -49,7 +49,7 @@ class CadAnimal {
   //Atualiza o carro no BD
   static updateAnimal(
     id,
-    { nome, especie, porte, sexo, idade, descricao },
+    { nome, especie, porte, sexo, idade, descricao, situacao },
     callback
   ) {
     const connection = CadAnimal.connect();
@@ -73,6 +73,9 @@ class CadAnimal {
     }
     if (descricao) {
       setStatementCollumns.push(`descricao = '${descricao}'`);
+    }
+    if (situacao) {
+      setStatementCollumns.push(`situacao = '${situacao}'`);
     }
 
     let aux = setStatementCollumns.join(",");
